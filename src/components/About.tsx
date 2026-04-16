@@ -31,10 +31,18 @@ export default function About() {
             viewport={{ once: true }}
             className="lg:col-span-4 flex justify-center"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-2 bg-gradient-to-br from-cyan-400 via-blue-600 to-purple-600">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-2 bg-gradient-to-br from-cyan-400 via-blue-600 to-purple-600 shadow-[0_0_30px_rgba(0,188,212,0.3)] group">
               <div className="w-full h-full rounded-full bg-[#050b14] flex items-center justify-center overflow-hidden border-4 border-[#050b14]">
-                {/* Replace with actual image */}
-                <div className="text-6xl font-display font-bold text-slate-700">ORS</div>
+                <img 
+                  src="/profile.png" 
+                  alt="Omar Rabea Shaban" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null;
+                    target.src = "https://picsum.photos/seed/omar/400/400"; // Fallback if image isn't uploaded yet
+                  }}
+                />
               </div>
             </div>
           </motion.div>
